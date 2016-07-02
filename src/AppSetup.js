@@ -56,8 +56,44 @@ export class AppSetup {
 		}
 	}
 
-	setrun(e) {
-		this.setup(e, setruns)
+	setrun(e, stores = setruns) {
+		if (typeof e !== 'function') throw new TypeError('setup(): The first parameter not is a function')
+
+		let useCallback = false
+		let usePromise = false
+		let useSecuence = false
+
+		if (e instanceof AppSetup) {
+			this[ stores ].add(() => e.run())
+		} else {
+			// With Callback
+			if (e.length >= 1) {
+				this[ stores ].add(() => new Promise((resolve, reject) => {
+					e((err = undefined) => {
+						if (err) {
+							reject(err)
+						} else {
+							resolve()
+						}
+					})
+				}))
+			} else {
+				// Without callback
+				try {
+					const result = e()
+				
+					// Is a Promise
+					if (result instanceof Promise) {
+						this[ stores ].add(() => result)
+					} else {
+						// is a function sequence
+						this[ stores ].add(() => Promise.resolve(result))
+					}
+				} catch (ex) {
+					this[ stores ].add(() => Promise.reject(ex))
+				}
+			}
+		}
 	}
 
 	run() {
@@ -65,7 +101,7 @@ export class AppSetup {
 
 			this[ runned ] = Promise.resolve()
 				.then(() => Promise.all( [ ...this[ setups ].values() ] ))
-				.then(() => Promise.all( [ ...this[ setruns ].values() ] ))
+				.then(() => Promise.all( [ ...this[ setruns ].values() ].map(e => e()) ))
 
 			this[ running ] = true
 		}
