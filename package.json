@@ -1,7 +1,7 @@
 {
   "name": "app-setup",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Es una clase para construir aplicaciones con módulos setup's",
   "main": "lib/AppSetup.js",
   "engine": {
     "node": ">= 6.2.0"
