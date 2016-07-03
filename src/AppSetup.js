@@ -1,10 +1,10 @@
 
-const setups = Symbol('setups')
-const setruns = Symbol('setruns')
-const running = Symbol('running')
-const setupsadd = Symbol('setups add')
-const onFinish = Symbol('event on finish')
-const runned = Symbol('runned')
+const setups = Symbol('setups'),
+	setruns = Symbol('setruns'),
+	running = Symbol('running'),
+	setupsadd = Symbol('setups add'),
+	onFinish = Symbol('event on finish'),
+	runned = Symbol('runned')
 
 export class AppSetup {
 	constructor () {

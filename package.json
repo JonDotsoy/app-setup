@@ -8,7 +8,8 @@
   },
   "scripts": {
     "gulp": "node_modules/.bin/gulp",
-    "prepublish": "npm run-script gulp build"
+    "prepublish": "npm run-script gulp build",
+    "test": "node_modules/.bin/mocha --compilers js:babel-register"
   },
   "keywords": [],
   "author": "Jonathan Delgado <hi@jon.soy> (http://jon.soy/)",
@@ -23,7 +24,9 @@
     "babel-preset-modern-node": "^2.2.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.9.0",
+    "expect.js": "^0.3.1",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2"
+    "gulp-babel": "^6.1.2",
+    "mocha": "^2.5.3"
   }
 }
