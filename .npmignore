@@ -38,5 +38,7 @@ jspm_packages
 .node_repl_history
 
 # Source files
+Gulpfile.babel.js
+test
 src
 !lib
