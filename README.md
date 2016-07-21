@@ -1,3 +1,8 @@
+
+
+### tl;dr
+Calls back and promises require wait, use functions to call setups applications.
+
 ## ¿Que es app-setup?
 Es una clase para construir aplicaciones con módulos setup's
 
